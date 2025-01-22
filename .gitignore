@@ -1,0 +1,5 @@
+#initial directories to ignore
+
+/build
+/.idea
+/cmake-build-debug
