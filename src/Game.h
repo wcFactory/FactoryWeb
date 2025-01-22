@@ -18,7 +18,7 @@ public:
 
 
     void Start();
-    void Update();
+    void Update() const;
 
 private:
     Texture logo {0};
