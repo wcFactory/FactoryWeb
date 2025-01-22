@@ -14,38 +14,50 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include "src/Game.h"
+#include "src/resource_dir.h"
 #include <iostream>
 
 #if defined(PLATFORM_WEB)
     #include <emscripten/emscripten.h>
 #endif
-
-//----------------------------------------------------------------------------------
-// Global Variables Definition
-//----------------------------------------------------------------------------------
-int screenWidth = 800;
-int screenHeight = 450;
-
 //----------------------------------------------------------------------------------
 // Module Functions Declaration
 //----------------------------------------------------------------------------------
-void UpdateDrawFrame(void);     // Update and Draw one frame
+void UpdateDrawFrame();     // Update and Draw one frame
 
 //----------------------------------------------------------------------------------
 // Main Entry Point
 //----------------------------------------------------------------------------------
+
+Game* game = new Game(); //Global game instance
+
 int main()
 {
     // Initialization
     //--------------------------------------------------------------------------------------
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+    SearchAndSetResourceDir("resources");
+
     InitWindow(screenWidth, screenHeight, "FactoryWeb");
+    InitAudioDevice();
+
+
+
+
+
+
+
+
 
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(UpdateDrawFrame, 0, 1);
 #else
     SetTargetFPS(60);   // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
-
+    game->Start();
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
@@ -56,6 +68,7 @@ int main()
     // De-Initialization
     //--------------------------------------------------------------------------------------
     CloseWindow();        // Close window and OpenGL context
+    CloseAudioDevice();
     //--------------------------------------------------------------------------------------
 
     return 0;
@@ -64,7 +77,7 @@ int main()
 //----------------------------------------------------------------------------------
 // Module Functions Definition
 //----------------------------------------------------------------------------------
-void UpdateDrawFrame(void)
+void UpdateDrawFrame()
 {
     // Update
     //----------------------------------------------------------------------------------
@@ -76,8 +89,8 @@ void UpdateDrawFrame(void)
     BeginDrawing();
 
         ClearBackground(BLACK);
+        game->Update();
 
-        DrawText("JUST MAKE THE DAMN THING!", 190, 200, 20, LIGHTGRAY);
 
     EndDrawing();
     //----------------------------------------------------------------------------------
