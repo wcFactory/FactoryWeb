@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.11) # FetchContent is available in 3.11+
 project(FactoryWeb)
 
+set(CMAKE_CXX_STANDARD 11)  # Or set to 17/20 if needed
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)  # Optional: Ensures strict compliance
+
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -29,7 +33,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 target_link_libraries(${PROJECT_NAME} raylib)
 
 # Web Configurations
-if (${PLATFORM} STREQUAL "Web")
+if ("${PLATFORM}" STREQUAL "WEB")
     set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html") # Tell Emscripten to build an example.html file.
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY -s GL_ENABLE_GET_PROC_ADDRESS=1")
 endif()
