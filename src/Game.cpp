@@ -15,7 +15,7 @@ Game::~Game() {
 void Game::Start()
 {
     logo = LoadTexture("art/logo.png");
-    music = LoadMusicStream("audio/music.wav");
+    music = LoadMusicStream("audio/music.ogg");
     PlayMusicStream(music);
 
 }
