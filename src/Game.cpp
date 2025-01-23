@@ -5,12 +5,9 @@
 #include "Game.h"
 
 
-Game::Game() {
+Game::Game() = default;
 
-}
-
-Game::~Game() {
-}
+Game::~Game() = default;
 
 void Game::Start()
 {
@@ -20,10 +17,8 @@ void Game::Start()
 
 }
 
-void Game::Update()
-{
-    DrawText("JUST BUILD IT!", 50, 50, 50, WHITE);
-
+void Game::Update() const {
+    DrawText("Welcome to FactoryWeb", 50, 50, 50, WHITE);
     DrawTextureEx(logo, {50, 100}, 0.0f, 0.2f, WHITE);
     UpdateMusicStream(music);
 }
