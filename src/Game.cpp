@@ -22,7 +22,8 @@ void Game::Start()
 
 void Game::Update()
 {
-    DrawText("Welcome to FactoryWeb", 50, 50, 50, WHITE);
+    DrawText("JUST BUILD IT!", 50, 50, 50, WHITE);
+
     DrawTextureEx(logo, {50, 100}, 0.0f, 0.2f, WHITE);
     UpdateMusicStream(music);
 }
