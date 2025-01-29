@@ -18,6 +18,7 @@ public:
     void Stop();
     void Update(float dt);
 
+    Vector2 GetPosition(){return pos;}
 private:
     void input(float dt);
     void draw();

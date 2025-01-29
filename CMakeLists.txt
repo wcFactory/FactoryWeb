@@ -33,7 +33,9 @@ add_executable(${PROJECT_NAME} main.cpp
         src/Game.h
         src/resource_dir.h
         src/Player.cpp
-        src/Player.h)
+        src/Player.h
+        src/Mirror.cpp
+        src/Mirror.h)
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)
 

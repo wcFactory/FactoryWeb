@@ -18,8 +18,8 @@
 #include "src/resource_dir.h"
 #include <iostream>
 
-constexpr int SCREEN_WIDTH = 800;
-constexpr int SCREEN_HEIGHT = 450;
+constexpr int SCREEN_WIDTH = 450;
+constexpr int SCREEN_HEIGHT = 800;
 
 
 

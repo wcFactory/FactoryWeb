@@ -7,6 +7,7 @@
 #include <string>
 #include "raylib.h"
 #include "Player.h"
+#include "Mirror.h"
 
 
 class Game {
@@ -22,6 +23,7 @@ public:
 
 private:
     Player* player { nullptr };
+    Mirror* mirror { nullptr };
 
 };
 

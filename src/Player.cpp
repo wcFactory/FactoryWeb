@@ -57,11 +57,6 @@ void Player::input(float dt)
     velocity.x *= damping;
     velocity.y *= damping;
 
-
-
-
-
-
     // Apply velocity to position
     pos.x += velocity.x * dt;
     pos.y += velocity.y * dt;
@@ -70,18 +65,18 @@ void Player::input(float dt)
     const char* directionText = TextFormat("DIRECTION:  %f, %f", targetDir.x, targetDir.y);
     const char* positionText = TextFormat("POSITION: %f, %f", pos.x, pos.y);
     const char* velocityText = TextFormat("VELOCITY: %f, %f", velocity.x, velocity.y);
-    DrawText(directionText, 50, 100, 18, WHITE);
-    DrawText(positionText, 50, 125, 18, WHITE);
-    DrawText(velocityText, 50, 150, 18, WHITE);
+    DrawText(directionText, 50, 600, 18, WHITE);
+    DrawText(positionText, 50, 625, 18, WHITE);
+    DrawText(velocityText, 50, 650, 18, WHITE);
 }
 
 
 void Player::draw()
 {
-    DrawRectangle(pos.x, pos.y, width, height, GREEN);
+    DrawRectangle((pos.x - (width / 2)), (pos.y - (height / 2)), width, height, GREEN);
 
-    if (IsKeyDown(KEY_UP)){DrawLine(0, (pos.y + (height / 2)) , GetScreenWidth(), (pos.y + (height / 2)), BLUE);}
-    if (IsKeyDown(KEY_DOWN)){DrawLine((pos.x + (width / 2)), 0 , (pos.x + (width / 2)), GetScreenHeight(), RED);}
+
+
 
 }
 
