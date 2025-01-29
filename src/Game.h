@@ -6,7 +6,7 @@
 #define GAME_H
 #include <string>
 #include "raylib.h"
-#include "raylib.h"
+#include "Player.h"
 
 
 class Game {
@@ -18,11 +18,11 @@ public:
 
 
     void Start();
-    void Update() const;
+    void Update(float dt) const;
 
 private:
-    Texture logo {0};
-    Music music {0};
+    Player* player { nullptr };
+
 };
 
 

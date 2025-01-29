@@ -18,6 +18,11 @@
 #include "src/resource_dir.h"
 #include <iostream>
 
+constexpr int SCREEN_WIDTH = 800;
+constexpr int SCREEN_HEIGHT = 450;
+
+
+
 #if defined(PLATFORM_WEB)
     #include <emscripten/emscripten.h>
 #endif
@@ -36,13 +41,14 @@ int main()
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+
+
 
     SearchAndSetResourceDir("resources");
 
-    InitWindow(screenWidth, screenHeight, "FactoryWeb");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "FactoryWeb");
     InitAudioDevice();
+    SetTargetFPS(120);
 
     game->Start();
 #if defined(PLATFORM_WEB)
@@ -72,6 +78,8 @@ int main()
 //----------------------------------------------------------------------------------
 void UpdateDrawFrame()
 {
+    const float dt = GetFrameTime();
+    DrawFPS(400, 0);
     // Update
     //----------------------------------------------------------------------------------
     // TODO: Update your variables here
@@ -82,7 +90,7 @@ void UpdateDrawFrame()
     BeginDrawing();
 
         ClearBackground(BLACK);
-        game->Update();
+        game->Update(dt);
 
 
 
